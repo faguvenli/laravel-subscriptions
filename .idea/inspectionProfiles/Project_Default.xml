@@ -1,0 +1,62 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="110" name="PHP" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="GrazieInspection" enabled="false" level="GRAMMAR_ERROR" enabled_by_default="false" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="18">
+            <item index="0" class="java.lang.String" itemvalue="dusk" />
+            <item index="1" class="java.lang.String" itemvalue="x-data" />
+            <item index="2" class="java.lang.String" itemvalue="x-show" />
+            <item index="3" class="java.lang.String" itemvalue="@mouseleave" />
+            <item index="4" class="java.lang.String" itemvalue="@mouseenter" />
+            <item index="5" class="java.lang.String" itemvalue="@click" />
+            <item index="6" class="java.lang.String" itemvalue="x-transition:enter-end" />
+            <item index="7" class="java.lang.String" itemvalue="x-transition:enter" />
+            <item index="8" class="java.lang.String" itemvalue="x-transition:leave-start" />
+            <item index="9" class="java.lang.String" itemvalue="x-transition:leave" />
+            <item index="10" class="java.lang.String" itemvalue="x-transition:leave-end" />
+            <item index="11" class="java.lang.String" itemvalue="x-transition:enter-start" />
+            <item index="12" class="java.lang.String" itemvalue="x-init" />
+            <item index="13" class="java.lang.String" itemvalue=":class" />
+            <item index="14" class="java.lang.String" itemvalue=":src" />
+            <item index="15" class="java.lang.String" itemvalue="x-for" />
+            <item index="16" class="java.lang.String" itemvalue=":key" />
+            <item index="17" class="java.lang.String" itemvalue=":style" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="div" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="LanguageDetectionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="LaravelPintValidationInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PhpUnhandledExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
