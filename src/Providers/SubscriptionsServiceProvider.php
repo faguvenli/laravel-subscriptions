@@ -24,9 +24,9 @@ class SubscriptionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected array $commands = [
-        MigrateCommand::class => 'command.rinvex.subscriptions.migrate',
-        PublishCommand::class => 'command.rinvex.subscriptions.publish',
-        RollbackCommand::class => 'command.rinvex.subscriptions.rollback',
+//        MigrateCommand::class => 'command.rinvex.subscriptions.migrate',
+//        PublishCommand::class => 'command.rinvex.subscriptions.publish',
+//        RollbackCommand::class => 'command.rinvex.subscriptions.rollback',
     ];
 
     /**
@@ -47,7 +47,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
         ]);
 
         // Register console commands
-        $this->commands($this->commands);
+//        $this->commands($this->commands);
     }
 
     /**
