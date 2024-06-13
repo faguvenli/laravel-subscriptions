@@ -11,6 +11,8 @@ use Rinvex\Subscriptions\Models\PlanFeature;
 use Rinvex\Subscriptions\Models\PlanSubscription;
 use Rinvex\Subscriptions\Models\PlanSubscriptionUsage;
 use Rinvex\Subscriptions\Console\Commands\MigrateCommand;
+use Rinvex\Subscriptions\Console\Commands\PublishCommand;
+use Rinvex\Subscriptions\Console\Commands\RollbackCommand;
 
 class SubscriptionsServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,8 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     protected array $commands = [
         MigrateCommand::class => 'command.rinvex.subscriptions.migrate',
+        PublishCommand::class => 'command.rinvex.subscriptions.publish',
+        RollbackCommand::class => 'command.rinvex.subscriptions.rollback',
     ];
 
     /**
@@ -43,7 +47,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
         ]);
 
         // Register console commands
-        $this->commands($this->commands);
+        $this->commands(array_values($this->commands));
     }
 
     /**
@@ -53,11 +57,17 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Publish Resources
+        $this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('rinvex.subscriptions.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
+        ], 'migrations');
+
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-            $this->publishes([
-                __DIR__.'/../../database/migrations' => database_path('migrations'),
-            ], 'migrations');
         }
     }
 }
