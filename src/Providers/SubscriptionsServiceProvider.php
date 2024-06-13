@@ -11,8 +11,6 @@ use Rinvex\Subscriptions\Models\PlanFeature;
 use Rinvex\Subscriptions\Models\PlanSubscription;
 use Rinvex\Subscriptions\Models\PlanSubscriptionUsage;
 use Rinvex\Subscriptions\Console\Commands\MigrateCommand;
-use Rinvex\Subscriptions\Console\Commands\PublishCommand;
-use Rinvex\Subscriptions\Console\Commands\RollbackCommand;
 
 class SubscriptionsServiceProvider extends ServiceProvider
 {
@@ -24,9 +22,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected array $commands = [
-//        MigrateCommand::class => 'command.rinvex.subscriptions.migrate',
-//        PublishCommand::class => 'command.rinvex.subscriptions.publish',
-//        RollbackCommand::class => 'command.rinvex.subscriptions.rollback',
+        MigrateCommand::class => 'command.rinvex.subscriptions.migrate',
     ];
 
     /**
@@ -36,7 +32,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex.subscriptions');
+        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'rinvex.subscriptions');
 
         // Bind eloquent models to IoC container
         $this->registerModels([
@@ -47,7 +43,7 @@ class SubscriptionsServiceProvider extends ServiceProvider
         ]);
 
         // Register console commands
-//        $this->commands($this->commands);
+        $this->commands($this->commands);
     }
 
     /**
@@ -57,5 +53,11 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+            $this->publishes([
+                __DIR__.'/../../database/migrations' => database_path('migrations'),
+            ], 'migrations');
+        }
     }
 }
